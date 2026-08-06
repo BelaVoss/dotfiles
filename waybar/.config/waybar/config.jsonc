@@ -1,0 +1,33 @@
+// ~/.config/waybar/config.jsonc
+
+{
+    "position": "top",
+    "layer": "top",
+    "height": 36,
+    "margin": "5 10 0 10",
+    "spacing": 4,
+
+    "include":[
+        "./modules/workspace.jsonc",
+        "./modules/clock.jsonc",
+        "./modules/cpu.jsonc",
+        "./modules/pulseaudio.jsonc",
+        "./modules/power.jsonc"
+    ],
+
+
+    "modules-left": [
+    ],
+
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "tray",
+        "clock",
+        "custom/power"
+    ]
+}
