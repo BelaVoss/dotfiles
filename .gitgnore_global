@@ -1,0 +1,21 @@
+# --- C / C++ ---
+*.o
+*.obj
+*.exe
+*.out
+build/
+bin/
+cmake-build-*/
+.cache/
+
+# --- Java ---
+*.class
+*.log
+target/
+.gradle/
+.idea/
+*.iml
+
+# --- OS / Editoren ---
+.DS_Store
+Thumbs.db
