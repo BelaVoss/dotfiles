@@ -45,7 +45,7 @@ local fileManager = "dolphin"
 local menu = "rofi -show run"
 local wlogout = "wlogout"
 local hyprshotRegion = "hyprshot -m region --clipboard-only"
-local switchTheme = "~/dotfiles/scripts/script.sh"
+local switchTheme = "~/dotfiles/hosts/laptop/scripts/script.sh"
 
 
 

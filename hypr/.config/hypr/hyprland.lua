@@ -1,0 +1,1 @@
+/home/martini/dotfiles/hosts/laptop/hyprland.lua
