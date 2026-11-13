@@ -1,11 +1,12 @@
-#custom-power {
-    margin: 10;
+* {
+    font-family: "AdwaitaMono Nerd Font", sans-serif;
 }
 
 #pulseaudio,
 #cpu,
 #clock,
 #custom-power,
+#battery,
 #tray,
 #workspaces {
     background: rgba(30, 30, 46, 0.95);
@@ -16,6 +17,14 @@
      border-radius: 4px;
     border: 2px solid #89b4fa;
     
+}
+
+#battery {
+    padding-right: 15px;
+}
+
+#custom-power {
+    padding-right: 15px;
 }
 
 #workspaces button {

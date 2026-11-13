@@ -21,19 +21,19 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "DP-1",
-    mode     = "1920x1080@144",
-    position = "1920x0",
+    output   = "eDP-1",
+    mode     = "1920x1080@60",
+    position = "0x0",
     scale    = "1",
 })
 
 hl.monitor({
-  	output 		= "HDMI-A-1",
-	mode		= "1920x1080@60",
-	position 	= "0x0",
-	scale 		= "1",
+    output   = "HDMI-A-1",
+    mode     = "1920x1080@60",
+    position = "1920x0",
+    scale    = "1",
+    mirror   = "eDP-1",
 })
-
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -229,8 +229,8 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
     },
 })
 
@@ -252,7 +252,7 @@ hl.config({
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
-            natural_scroll = false,
+            natural_scroll = true,
         },
     },
 })
@@ -375,18 +375,18 @@ hl.window_rule({
     float = true,
 })
 
--- workspaces 1-5 on HDMI-A-1
-for i = 1, 5 do
-    hl.workspace_rule({
-        workspace = tostring(i),
-        monitor = "HDMI-A-1",
-        default = true,
-        persistent = true,
-    })
-end
+-- -- workspaces 1-5 on HDMI-A-1
+-- for i = 1, 5 do
+--     hl.workspace_rule({
+--         workspace = tostring(i),
+--         monitor = "HDMI-A-1",
+--         default = true,
+--         persistent = true,
+--     })
+-- end
 
 -- workspace 6-10 on DP-1
-for i = 6, 10 do
+for i = 1, 10 do
     hl.workspace_rule({
         workspace = tostring(i),
         monitor = "DP-1",

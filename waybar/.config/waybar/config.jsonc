@@ -12,11 +12,14 @@
         "./modules/clock.jsonc",
         "./modules/cpu.jsonc",
         "./modules/pulseaudio.jsonc",
+        "./modules/battery.jsonc",
         "./modules/power.jsonc"
     ],
 
 
     "modules-left": [
+        "clock",
+        "pulseaudio"
     ],
 
     "modules-center": [
@@ -24,10 +27,9 @@
     ],
 
     "modules-right": [
-        "pulseaudio",
         "cpu",
         "tray",
-        "clock",
+        "battery",
         "custom/power"
     ]
 }

@@ -42,8 +42,7 @@ THEME="$THEME_DIR/$NEXT"
 #"$HOME/dotfiles/generated-colors/kitty.conf"
 
 # hyprpaper
-hyprctl hyprpaper wallpaper "HDMI-A-1,$THEME/wallpaper.png"
-hyprctl hyprpaper wallpaper "DP-1,$THEME/wallpaper.png"
+hyprctl hyprpaper wallpaper "eDP-1,$THEME/wallpaper.png"
 
 # waybar
 killall -SIGUSR2 waybar

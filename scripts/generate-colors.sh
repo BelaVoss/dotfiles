@@ -31,13 +31,7 @@ cat > "$OUT/hyprpaper.conf" <<EOF
 preload = $THEMES_DIR/$CURRENT/wallpaper.png
 
 wallpaper {
-    monitor = HDMI-A-1
-    path = $THEMES_DIR/$CURRENT/wallpaper.png
-    fit_mode = cover
-}
-
-wallpaper {
-    monitor = DP-1
+    monitor = eDP-1 
     path = $THEMES_DIR/$CURRENT/wallpaper.png
     fit_mode = cover
 }
