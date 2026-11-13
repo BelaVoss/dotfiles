@@ -1,0 +1,26 @@
+{
+    "hyprland/workspaces":{
+        "format": "{icon} {windows}",
+        "persistent-workspaces": {
+        "*": 5
+        },
+        "window-rewrite-default": "󰊠 ",
+        "window-rewrite": {
+        "kitty": "󰆍",
+        "firefox": "",
+        "spotify": "",
+        "steam": "",
+        "discord": "",
+        "code": "󰨞"
+        },
+        "format-icons": {
+            "active": "󰮯",
+            "special": "󱁂",
+            "default": "󰊠 ",
+            "urgent": "󰧵",
+            "empty": ""
+        },
+        "show-special": true,
+        "all-outputs": true
+    }
+}

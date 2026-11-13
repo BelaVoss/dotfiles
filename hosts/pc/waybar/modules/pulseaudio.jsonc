@@ -1,0 +1,23 @@
+{
+    "pulseaudio": {
+        "format": "{icon}",
+        "states": {
+            "low": 30,
+            "medium": 60,
+            "high": 90
+        },
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": "󰋋 ",
+            "headset": "󰋋 ",
+            "hands-free": "󰋋 ",
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        },
+        "on-click": "pavucontrol",
+        "tooltip-format": "Output: {volume}%"
+    }
+} 
