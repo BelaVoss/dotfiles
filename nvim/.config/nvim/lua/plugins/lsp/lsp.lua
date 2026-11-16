@@ -79,6 +79,7 @@ return {
 				"--completion-style=detailed",
 				"--function-arg-placeholders",
 				"--fallback-style=llvm",
+                "--compile-commands-dir=build",
 			},
 			init_options = {
 				usePlaceholders = true,

@@ -1,23 +1,27 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = 'master',
+        branch = "main",
         lazy = false,
         build = ":TSUpdate",
-
         config = function()
-        require'nvim-treesitter.configs'.setup {
-          ensure_installed = {"cpp","vim", "vimdoc", "lua", "java", "javascript", "typescript", "html", "css", "json", "tsx", "markdown", "markdown_inline", "gitignore", "ninja", "rst"},
-          sync_install = false,
+            local ts = require("nvim-treesitter")
+            ts.setup({})
 
-            auto_install = true,
+            -- Gewünschte Parser installieren
+            ts.install({
+                "cpp", "vim", "vimdoc", "lua", "java",
+                "javascript", "typescript", "html", "css",
+                "json", "tsx", "markdown", "markdown_inline",
+                "gitignore", "ninja", "rst"
+            })
 
-
-          highlight = {
-            enable = true,
-                additional_vim_regex_highlighting = false,
-          },
-        }
+            -- Treesitter-Highlighting für alle installierten Sprachen aktivieren
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function()
+                    pcall(vim.treesitter.start)
+                end,
+            })
         end,
     }
 }
