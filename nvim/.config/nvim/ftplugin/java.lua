@@ -45,6 +45,28 @@ end
 local launcher =
 	vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar")
 
+local root = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "settings.gradle", "settings.gradle.kts" })
+
+local function wrapper_checksums()
+	if not root then
+		return {}
+	end
+	-- nur Projekte unter ~/Development vertrauen
+	if not vim.startswith(root, vim.fn.expand("~/Development")) then
+		return {}
+	end
+	local jar = root .. "/gradle/wrapper/gradle-wrapper.jar"
+	if vim.fn.filereadable(jar) == 0 then
+		return {}
+	end
+	local out = vim.fn.system({ "sha256sum", jar })
+	local hash = out:match("^(%x+)")
+	if not hash then
+		return {}
+	end
+	return { { sha256 = hash, allowed = true } }
+end
+
 -- See `:help vim.lsp.start` for an overview of the supported `config` options.
 local config = {
 	name = "jdtls",
@@ -55,10 +77,9 @@ local config = {
 	-- As alternative you could also avoid the `jdtls` wrapper and launch
 	-- eclipse.jdt.ls via the `java` executable
 	-- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
-	cmd = {
 
-		"java", -- or '/path/to/java17_or_newer/bin/java'
-		-- depends on if `java` is in your $PATH env variable and if it points to the right version.
+	cmd = {
+		"/usr/lib/jvm/java-25-openjdk/bin/java",
 
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 		"-Dosgi.bundles.defaultStartLevel=4",
@@ -75,30 +96,27 @@ local config = {
 		launcher,
 
 		"-configuration",
-		vim.fn.stdpath("data")
-			.. package.config:sub(1, 1)
-			.. "mason"
-			.. package.config:sub(1, 1)
-			.. "packages"
-			.. package.config:sub(1, 1)
-			.. "jdtls"
-			.. package.config:sub(1, 1)
-			.. "config_"
-			.. (os_name == "Windows_NT" and "win" or os_name == "Linux" and "linux" or "mac"),
-
-		"jdtls",
+		vim.fn.stdpath("data") .. "/mason/packages/jdtls/config_linux",
 		"-data",
 		workspace_dir,
 	},
 
 	-- `root_dir` must point to the root of your project.
 	-- See `:help vim.fs.root`
-	root_dir = require("jdtls.setup").find_root({ ".git", "mvnw", "gradlew", "settings.gradle.kts" }),
+	root_dir = root,
 	-- Here you can configure eclipse.jdt.ls specific settings
 	-- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
 	-- for a list of options
 	settings = {
-		java = {},
+		java = {
+			imports = {
+				gradle = {
+					wrapper = {
+						checksums = wrapper_checksums(),
+					},
+				},
+			},
+		},
 	},
 
 	-- This sets the `initializationOptions` sent to the language server
@@ -118,4 +136,3 @@ jdtls.start_or_attach(config)
 jdtls.setup_dap({
 	hotcodereplace = "auto",
 })
-
