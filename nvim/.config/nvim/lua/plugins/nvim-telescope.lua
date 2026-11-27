@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.8",
+        branch = "master",
 		dependencies = {
 			-- general purpose plugin used to build user interfaces in neovim plugins
 			"nvim-lua/plenary.nvim",
